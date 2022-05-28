@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --coverage",
     "dev": "npx nodemon src/index.js",
     "start": "node src/index.js"
   },
@@ -21,6 +21,7 @@
   "devDependencies": {
     "cross-env": "^7.0.3",
     "jest": "^28.1.0",
+    "mongodb-memory-server": "^8.6.0",
     "nodemon": "^2.0.16"
   }
 }
