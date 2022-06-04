@@ -4,24 +4,14 @@ import model from "./../model/user.js"
 export default class UserService {
 
     static async findAll() {
-        try {
-            return await model.find({})
-        } catch (error) {
-            throw {
-                message: "Erro ao buscar todos os usuários: " + error.message,
-                clientMessage: "Erro ao buscar usuários"
-            }
-        }
+        return await model.find({})
     }
 
     static async create(user) {
         try {
             return await model.create(user)
         } catch (error) {
-            throw {
-                message: "Erro ao cadastrar usuário: " + error.message,
-                clientMessage: "Erro ao cadastrar usuário"
-            }
+            throw new Error("Erro ao cadastrar usuário")
         }
     }
 
@@ -29,10 +19,7 @@ export default class UserService {
         try {
             return await model.updateOne({ _id: user._id }, user)
         } catch (error) {
-            throw {
-                message: "Erro ao atualizar usuário: " + error.message,
-                clientMessage: "Erro ao atualizar usuário"
-            }
+            throw new Error("Erro ao atualizar usuário")
         }
     }
 
@@ -40,10 +27,7 @@ export default class UserService {
         try {
             return await model.deleteOne({ _id: id })
         } catch (error) {
-            throw {
-                message: "Erro ao remover usuário: " + error.message,
-                clientMessage: "Erro ao remover usuário"
-            }
+            throw new Error("Erro ao remover usuário")
         }
     }
 
