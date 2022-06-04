@@ -1,4 +1,3 @@
-import "dotenv/config"
 import DB from "./../../src/db/index.js"
 import service from "./../../src/service/user.service.js";
 

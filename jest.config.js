@@ -1,6 +1,6 @@
 export default {
-    // setupFiles: ["./test/dotenv-config.js"],
-    // setupFilesAfterEnv: ["./jest.setup.js"],
-    modulePathIgnorePatterns: ["src/"]
-}
-
+  // setupFiles: ["./test/dotenv-config.js"],
+  // setupFilesAfterEnv: ["./jest.setup.js"],
+  setupFiles: ["./test/dotenv-config.js"],
+  modulePathIgnorePatterns: ["src/"],
+};
