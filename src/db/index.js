@@ -1,13 +1,9 @@
-import mongoose from "mongoose"
-const DB_URL = process.env.DB_URL
+import main from "./main.js"
+import test from "./test.js"
 
-export async function connect() {
-    try {
-        const connection = await mongoose.connect(DB_URL)
-        return connection
-    } catch (error) {
-        throw {
-            message: "Falha ao connectar no DB: " + error.message
-        }
-    }
-}
+let db
+
+if(process.env.NODE_ENV == "test" ) db = test
+else db = main
+
+export default db

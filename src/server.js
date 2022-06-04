@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { connect } from "./db.js";
+import DB from "./db/index.js";
 import userRouter from "./router/user.router.js";
 
 const api = new express();
@@ -20,7 +20,7 @@ async function setup() {
 
 async function dbConnection() {
   try {
-    await connect();
+    await DB.connect();
   } catch (error) {
     console.log(error.message);
     process.exit(1);

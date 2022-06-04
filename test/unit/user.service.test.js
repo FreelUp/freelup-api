@@ -1,5 +1,5 @@
 import "dotenv/config"
-import { connect, closeDatabase, clearDatabase } from "./../../src/db/test.js"
+import DB from "./../../src/db/index.js"
 import service from "./../../src/service/user.service.js";
 
 const user = {
@@ -9,12 +9,12 @@ const user = {
 }
 
 beforeAll(async () => {
-    await connect()
+    await DB.connect()
 })
 
 afterAll(async () => {
-    await clearDatabase()
-    await closeDatabase()
+    await DB.clearDatabase()
+    await DB.closeDatabase()
 })
 
 test("Deve retornar todos os usuários cadastrados", async () => {
