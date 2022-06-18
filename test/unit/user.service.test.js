@@ -45,6 +45,11 @@ test("Deve lançar exceção por não encontrar o usuário a ser alterado", asyn
     .toThrow()
 })
 
+test("Deve buscar um usuário por login e senha", async () => {
+    const result = await service.findOne({ email: "jao@gmail.com", password: "123" })
+    expect(result._id).toStrictEqual(user._id)
+})
+
 test("Deve remover um usuário já cadastrado", async () => {
     const result = await service.remove(user._id)
     expect(result.deletedCount).toBe(1)

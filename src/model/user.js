@@ -14,6 +14,10 @@ const schema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  active: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 const model = mongoose.model("User", schema);

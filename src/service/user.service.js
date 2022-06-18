@@ -7,6 +7,10 @@ export default class UserService {
         return await model.find({})
     }
 
+    static async findOne(filter) {
+        return await model.findOne(filter)
+    }
+
     static async create(user) {
         try {
             return await model.create(user)
