@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
         clientMessage: "Usuário não encontrado",
         status: 404,
       };
-    } else if(!result.active) {
+    } else if (!result.active) {
       throw {
         message: "Usuário inativado",
         clientMessage: "Usuário inativado",
@@ -27,7 +27,12 @@ router.post("/", async (req, res) => {
         { name: result.name, email: result.email, _id: result._id },
         process.env.PRIVATE_KEY
       );
-      res.json({ token: token });
+      res.json({
+        _id: result._id,
+        name: result.name,
+        email: result.email,
+        token: token,
+      });
     }
   } catch (error) {
     console.log(error.message);
