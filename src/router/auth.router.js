@@ -1,6 +1,6 @@
 import express from "express";
 import service from "./../service/user.service.js";
-import jwt from "jsonwebtoken";
+import { encode } from "../utils/token.util.js";
 
 const router = new express.Router();
 
@@ -23,10 +23,11 @@ router.post("/", async (req, res) => {
         status: 403,
       };
     } else {
-      const token = jwt.sign(
-        { name: result.name, email: result.email, _id: result._id },
-        process.env.PRIVATE_KEY
-      );
+      const token = encode({
+        name: result.name,
+        email: result.email,
+        _id: result._id,
+      });
       res.json({
         _id: result._id,
         name: result.name,

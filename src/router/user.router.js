@@ -1,9 +1,10 @@
 import express from "express";
 import service from "./../service/user.service.js";
+import { verify } from "../middleware/auth.middleware.js";
 
 const router = new express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/", verify, async (req, res) => {
   try {
     res.json(await service.findAll());
   } catch (error) {
