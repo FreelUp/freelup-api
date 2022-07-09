@@ -1,5 +1,5 @@
-import mongoose from "mongoose"
 import model from "./../model/user.js"
+import { getMongooseErrorMessage } from "../utils/error.util.js"
 
 export default class UserService {
 
@@ -15,7 +15,8 @@ export default class UserService {
         try {
             return await model.create(user)
         } catch (error) {
-            throw new Error("Erro ao cadastrar usuário")
+            const message = getMongooseErrorMessage(error)
+            throw new Error(message || "Erro ao cadastrar usuário")
         }
     }
 
@@ -23,7 +24,8 @@ export default class UserService {
         try {
             return await model.updateOne({ _id: user._id }, user)
         } catch (error) {
-            throw new Error("Erro ao atualizar usuário")
+            const message = getMongooseErrorMessage(error)
+            throw new Error(message || "Erro ao atualizar usuário")
         }
     }
 

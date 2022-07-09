@@ -9,7 +9,7 @@ router.get("/", verify, async (req, res) => {
     res.json(await service.findAll());
   } catch (error) {
     console.log(error.message);
-    res.status(error.status || 500).json({ message: error.clientMessage });
+    res.status(error.status || 500).json({ message: error.message });
   }
 });
 
@@ -18,7 +18,7 @@ router.post("/", async (req, res) => {
     res.json(await service.create(req.body));
   } catch (error) {
     console.log(error.message);
-    res.status(error.status || 500).json({ message: error.clientMessage });
+    res.status(error.status || 500).json({ message: error.message });
   }
 });
 
